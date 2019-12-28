@@ -1,0 +1,28 @@
+#components-layout-demo-side .logo {
+    height: 32px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 16px;
+  }
+
+.ant-switch-inner {
+    color: #3A3A3A;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 115%;
+    
+}
+
+.ant-switch {
+    background-color: #DBDBDB;
+
+}
+
+.ant-switch-checked {
+    background-color: #DBDBDB;
+}
+
+.ant-switch-loading-icon, .ant-switch::after {
+    background-color: #4FA1C1;
+}
