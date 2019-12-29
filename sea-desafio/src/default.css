@@ -26,3 +26,27 @@
 .ant-switch-loading-icon, .ant-switch::after {
     background-color: #4FA1C1;
 }
+
+.ant-menu.ant-menu-dark .ant-menu-item-selected, .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
+    background-color: rgba(255, 255, 255, 0.93);
+}
+
+.line {
+    margin:5px 0;
+    height:4px;
+    background:
+      repeating-linear-gradient(to right,#4FA1C1 0,#4FA1C1 9px,transparent 9px,transparent 18px)
+      /*5px red then 2px transparent -> repeat this!*/
+  }
+
+.ant-btn-primary {
+    color: #fff;
+    background-color: #4FA1C1;
+    border-color: #4FA1C1;
+}
+
+.ant-btn-primary:hover, .ant-btn-primary:focus {
+    color: #fff;
+    background-color: #4893B0;
+    border-color: #4893B0;
+}
