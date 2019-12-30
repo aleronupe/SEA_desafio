@@ -3,9 +3,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import "antd/dist/antd.css";
-import "./default.css";
-import 'typeface-roboto'
-
+import "../default.css";
+import 'typeface-roboto';
+import { changeCard } from '../actions';
+import { connect } from 'react-redux';
 
 import {
     Card,
@@ -16,6 +17,7 @@ import {
     Radio,
     Cascader,
     Checkbox,
+    Icon,
     Col, 
     Row } from 'antd';
 
@@ -25,15 +27,31 @@ import {
 
 const {Title } = Typography;
 
+const mapStateToProps = state => {
+    return { cardType: state.cardType }
+};
+
 
 class AddWorker extends React.Component {
 
     render() {
         return (
             <Card 
-            title="Funcionário(s)" 
+
+            title={
+                <div style={{height: '100%', width: '100%', marginBottom: '10px'}}>
+                    <Button 
+                     style={{float: 'left', textAlign: 'center', paddingLeft: '0px', paddingRight: '14px', backgroundColor: '#4FA1C1', borderColor: 'transparent'}}
+                     onClick={ () => this.props.changeCard('listWorkers') }>
+                        <Icon type="arrow-left" style={{fontSize: '22px', color: '#FFFFFF'}} />
+                    </Button>
+                    <Title
+                        style={{float: 'left', fontFamily: 'Ubuntu', fontStyle: 'normal', fontWeight: 'normal', fontSize: '28px', lineHeight: '32px', color: '#FFFFFF'}} 
+                        level={1}> Adicionar Funcionário </Title>
+                </div>
+            } 
             style={{ float:'left', width: '759px', left: '34px', background: '#FFFFFF', boxShadow: '0px 2px 23px rgba(0, 0, 0, 0.05)', borderRadius: '20px', textAlign: 'center'}}
-            headStyle={{background: '#4FA1C1', borderRadius: '20px 20px 0px 0px', fontFamily: 'Ubuntu', fontStyle: 'normal', fontWeight: 'normal', fontSize: '28px', lineHeight: '32px', color: '#FFFFFF'}}
+            headStyle={{height:'65px', width:'759px', paddingBottom:'10px', background: '#4FA1C1', borderRadius: '20px 20px 0px 0px', fontFamily: 'Ubuntu', fontStyle: 'normal', fontWeight: 'normal', fontSize: '28px', lineHeight: '32px', color: '#FFFFFF'}}
             bodyStyle={{padding: '15px 15px 26px 15px'}}>
             
                 <Card
@@ -230,4 +248,4 @@ class AddWorker extends React.Component {
 
 // ## Step 3 ## : Render the components at the html page used
 
-export default AddWorker
+export default connect(mapStateToProps, { changeCard })(AddWorker)
