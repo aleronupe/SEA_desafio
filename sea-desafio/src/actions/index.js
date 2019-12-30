@@ -4,3 +4,10 @@ export const changeCard = cardType => {
         payload: cardType
     }
 }
+
+export const changeStep = stepStatus => {
+    return {
+        type: 'STEP_TYPE',
+        payload: stepStatus
+    }
+}

@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import "antd/dist/antd.css";
 import "../default.css";
 import 'typeface-roboto';
-import { changeCard } from '../actions';
+import { changeCard, changeStep } from '../actions';
 import { connect } from 'react-redux';
 
 
@@ -32,7 +32,7 @@ const { Header, Content, Footer, Sider } = Layout;
 const { Text, Title } = Typography;
 
 const mapStateToProps = state => {
-    return { cardType: state.cardType }
+    return { stepStatus: state.stepStatus }
 };
 
 class ListWorker extends React.Component {
@@ -48,6 +48,7 @@ class ListWorker extends React.Component {
                     
                     <Button 
                     style={{width: '729px', height: '60px', bottom: '20px',border: '1px solid #4FA1C1', boxSizing: 'border-box', borderRadius: '10px', fontFamily: 'Ubuntu', fontStyle: 'normal', fontWeight: 'normal', fontSize: '16px', lineHeight: '18px', color: '#4FA1C1'}} 
+                    onClick={ () => this.props.changeCard('addWorker') }
                     size='large'> + Adicionar Funcionário</Button>
 
                     <br />
@@ -132,6 +133,9 @@ class ListWorker extends React.Component {
 
                     <Switch 
                     style={{marginLeft: '20px', float: 'right'}}
+                    defaultChecked={false}
+                    checked={this.props.stepStatus}
+                    onChange={this.props.changeStep}
                     checkedChildren="Sim" 
                     unCheckedChildren="Não" />
 
@@ -145,7 +149,7 @@ class ListWorker extends React.Component {
 
                 <Button 
                 style={{float: 'right', marginRight: '20px', marginTop: '13px', width: '194px', height: '32px', borderRadius: '10px', background: '#4FA1C', fontFamily: 'Roboto', fontStyle: 'normal', fontWeight: 'bold', fontSize: '14px', lineHeight: '16px', color: '#FFFFFF'}}
-                type="primary" onClick={ () => this.props.changeCard('addWorker') }>
+                type="primary">
                     Próximo passo
                 </Button>
 
@@ -159,4 +163,4 @@ class ListWorker extends React.Component {
 
 // ## Step 3 ## : Render the components at the html page used
 
-export default connect(mapStateToProps, { changeCard })(ListWorker)
+export default connect(mapStateToProps, { changeCard, changeStep } )(ListWorker)

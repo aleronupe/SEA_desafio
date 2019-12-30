@@ -43,7 +43,13 @@ import {
 const { Header, Content, Footer, Sider } = Layout;
 const { Text, Title } = Typography;
 
-
+const ConcludedText = () => {
+    return (
+        <Title
+        style={{marginTop: '4px', fontFamily: 'Ubuntu', fontStyle: 'normal', fontWeight: '500', fontSize: '14px', lineHeight: '16px', color: '#4FA1C1'}} 
+        level={4}>CONCLUIDO</Title>
+    );
+};
 
 
 class App extends React.Component {
@@ -56,12 +62,6 @@ class App extends React.Component {
 
         return card[cardType];
     };
-
-    nextStep = () => {
-        this.setState({cardType: 'addWorker'})
-    }
-  
-
 
     render() {
         console.log(this.props);
@@ -162,9 +162,7 @@ class App extends React.Component {
                                     <Title
                                     style={{marginTop: '16px', fontFamily: 'Ubuntu', fontStyle: 'normal', fontWeight: '500', fontSize: '14px', lineHeight: '16px', color: '#4FA1C1'}} 
                                     level={4}>ITEM 1</Title>
-                                    <Title
-                                    style={{marginTop: '4px', fontFamily: 'Ubuntu', fontStyle: 'normal', fontWeight: '500', fontSize: '14px', lineHeight: '16px', color: '#4FA1C1'}} 
-                                    level={4}>CONCLUIDO</Title>
+                                    {this.props.stepStatus && <ConcludedText/> }
                                 </div>
                             </Col>
                             <Col span={1}>
@@ -319,7 +317,10 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => {
-    return { cardType: state.cardType }
+    return { 
+        cardType: state.cardType, 
+        stepStatus: state.stepStatus
+    }
 };
 
 // ## Step 3 ## : Render the components at the html page used
