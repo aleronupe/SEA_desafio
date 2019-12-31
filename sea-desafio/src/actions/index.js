@@ -11,3 +11,10 @@ export const changeStep = stepStatus => {
         payload: stepStatus
     }
 }
+
+export const fetchWorkers = () => {
+    return {
+        type: 'FETCH_TYPE',
+        payload: 'http://localhost:8080/worker'
+    }
+}

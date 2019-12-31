@@ -16,7 +16,24 @@ const stepStatusReducer = (defaultStatus = false, action) => {
     return defaultStatus;
 }
 
+const fetchWorkersReducer = (initialData = [], action) => {
+
+    if (action.type === 'FETCH_TYPE'){
+        console.log('passed here fetch');
+        // fetch(action.payload)
+        // .then(res => res.json())
+        // .then((data) => {
+        //   return data;
+        // })
+        // .catch(console.log)
+    }
+
+
+    return initialData;
+}
+
 export const Reducers = combineReducers({
     cardType: cardTypeReducer,
-    stepStatus: stepStatusReducer
+    stepStatus: stepStatusReducer,
+    workersList: fetchWorkersReducer
 });

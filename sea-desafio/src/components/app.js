@@ -18,6 +18,7 @@ import Silhouette1 from '../icons/silhouette-1.js';
 import AddWorker from './add-worker.js';
 import ListWorkers from './list-workers.js';
 import { connect } from 'react-redux';
+import { fetchWorkers } from '../actions';
 
 
 
@@ -62,6 +63,10 @@ class App extends React.Component {
 
         return card[cardType];
     };
+
+    componentDidMount(){
+        fetchWorkers();
+    }
 
     render() {
         console.log(this.props);
@@ -305,7 +310,7 @@ class App extends React.Component {
                     </div>
                 </Content>
 
-                <Footer style={{extAlign: 'center', background: '#E5E5E5' }}>
+                <Footer style={{textAlign: 'center', background: '#E5E5E5' }}>
                     <div style={{float: 'left', width: '100%', maxWidth: '1309px', textAlign: 'center' }}>
                         Created by Alexandre Miguel
                     </div>
@@ -319,10 +324,11 @@ class App extends React.Component {
 const mapStateToProps = state => {
     return { 
         cardType: state.cardType, 
-        stepStatus: state.stepStatus
+        stepStatus: state.stepStatus,
+        workersList: state.workersList
     }
 };
 
 // ## Step 3 ## : Render the components at the html page used
 
-export default connect(mapStateToProps)(App)
+export default connect(mapStateToProps, { fetchWorkers })(App)
